@@ -36,7 +36,6 @@ dependencies {
 
     // Retrofit & OKHttp
     compile "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
-    compile "com.squareup.retrofit2:converter-jackson:$rootProject.ext.retrofitVersion"
     compile "com.squareup.retrofit2:retrofit-mock:$rootProject.ext.retrofitVersion"
     compile "com.squareup.okhttp3:okhttp:$rootProject.ext.okHttpVersion"
     compile "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.okHttpVersion"
