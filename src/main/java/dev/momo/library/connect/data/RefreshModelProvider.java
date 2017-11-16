@@ -128,9 +128,8 @@ public class RefreshModelProvider<M extends DataModel<P>, P> extends DataModelPr
      */
     protected void askLoadMore(int position) {
         if (!isPagable()) return;
-        //        Logger.D(TAG, "askloadmore %d %b", position, noMore);
+        if (isFetching()) return;
         if (noMore) return;
-        //        Logger.D(TAG, "count %d - position %d = %d ?", count(), position, count() - position);
         if (count() - position < pageOption.getPageItemCount()) {
             // load more
             load();
@@ -147,9 +146,6 @@ public class RefreshModelProvider<M extends DataModel<P>, P> extends DataModelPr
         refreshCellHolder.getRefreshApiCell().enqueue(new Callback<List<M>>() {
             @Override
             public void onResponse(Call<List<M>> call, Response<List<M>> response) {
-
-                Logger.D(TAG, "onResponse");
-
                 if (response == null) {
                     Logger.ES(TAG, "get null response");
                     onLoadFinish(null);
