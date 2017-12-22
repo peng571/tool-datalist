@@ -26,6 +26,11 @@ android {
             testProguardFile "test-proguard-rules.pro"
         }
     }
+
+    compileOptions {
+        sourceCompatibility rootProject.ext.sourceCompatibility
+        targetCompatibility rootProject.ext.sourceCompatibility
+    }
 }
 
 dependencies {
