@@ -1,53 +1,62 @@
-apply plugin: 'com.android.library'
-
-android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-
-
-    defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
-
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        google()
+        jcenter()
     }
-    buildTypes {
-        debug {
-            minifyEnabled false
-            useProguard false
-        }
-        release {
-            minifyEnabled true
-            useProguard true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            testProguardFile "test-proguard-rules.pro"
-        }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.1'
     }
-
-    compileOptions {
-        sourceCompatibility rootProject.ext.sourceCompatibility
-        targetCompatibility rootProject.ext.sourceCompatibility
-    }
-    buildToolsVersion '27.0.3'
 }
 
-dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(path: ':library-core')
 
-    implementation "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
-    implementation "com.android.support:recyclerview-v7:$rootProject.ext.supportLibraryVersion"
-    implementation "com.android.support:design:$rootProject.ext.supportLibraryVersion"
-    implementation "com.android.support:support-annotations:$rootProject.ext.supportLibraryVersion"
-
-    // Retrofit & OKHttp
-    implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofitVersion"
-    implementation "com.squareup.retrofit2:retrofit-mock:$rootProject.ext.retrofitVersion"
-    implementation "com.squareup.okhttp3:okhttp:$rootProject.ext.okHttpVersion"
-    implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.okHttpVersion"
-
-    androidTestImplementation "com.android.support.test:runner:$rootProject.ext.runnerVersion"
-    testImplementation "junit:junit:$rootProject.ext.junitVersion"
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        tasks.withType(Javadoc) {
+            options.addStringOption('Xdoclint:none', '-quiet')
+            options.addStringOption('encoding', 'UTF-8')
+        }
+    }
 }
+
+
+//load & set developer info
+Properties properties = new Properties()
+File localPropertiesFile = project.file("../../PUBLISH/bintray.properties")
+if (localPropertiesFile.exists()) {
+    properties.load(localPropertiesFile.newDataInputStream())
+}
+def userName = properties.getProperty("bintray.user")
+def apikey = properties.getProperty("bintray.apiKey")
+
+
+ext{
+    libraryGroup = 'org.pengyr.tool'
+    siteUrl = 'https://github.com/peng571/android-datalist'
+
+    versionCode = 6
+    versionName = '0.0.6'
+
+    bintrayUserName = userName
+    bintrayApikey = apikey
+
+    javaVersion = JavaVersion.VERSION_1_8
+    buildToolVersion = '27.0.3'
+    compileSdk = 27
+    targetSdk = 27
+    minSdk = 16
+
+    supportLibraryVersion = '27.1.1'
+
+    junitVersion = '4.12'
+    runnerVersion = '1.0.1'
+
+}
+
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
