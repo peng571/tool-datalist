@@ -8,7 +8,7 @@ buildscript {
 
 ext {
     libraryName = 'tool-datalist'
-    libraryDescription = 'Data list'
+    libraryDescription = 'Data Model, Container, Provider.\nand a ListView to work fine with them.'
 
     retrofitVersion = '2.4.0'
     okHttpVersion = '3.10.0'
@@ -58,21 +58,19 @@ android {
 
 dependencies {
     // Android Support Library
-    implementation "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
-    implementation "com.android.support:recyclerview-v7:$rootProject.ext.supportLibraryVersion"
-    implementation "com.android.support:design:$rootProject.ext.supportLibraryVersion"
+//    implementation "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
+//    implementation "com.android.support:recyclerview-v7:$rootProject.ext.supportLibraryVersion"
+//    implementation "com.android.support:design:$rootProject.ext.supportLibraryVersion"
     implementation "com.android.support:support-annotations:$rootProject.ext.supportLibraryVersion"
 
     // Retrofit & OKHttp
-    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
-    implementation "com.squareup.retrofit2:retrofit-mock:$retrofitVersion"
-    implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
-    implementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
+//    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+//    implementation "com.squareup.retrofit2:retrofit-mock:$retrofitVersion"
+//    implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
+//    implementation "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
 
     androidTestImplementation "com.android.support.test:runner:$rootProject.ext.runnerVersion"
     testImplementation "junit:junit:$rootProject.ext.junitVersion"
-
-    implementation'org.pengyr.tool:tool-core:0.0.5'
 }
 
 

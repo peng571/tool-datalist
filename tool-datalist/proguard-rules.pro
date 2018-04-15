@@ -27,12 +27,11 @@
 -dontnote com.android.vending.licensing.ILicensingService
 
 
-#-repackageclasses 'dev.momo.library.connect'
--allowaccessmodification
--useuniqueclassmembernames
--keeppackagenames doNotKeepAThing
+-keep public class org.pengyr.tool.datalist.**{
+   public protected *;
+}
 
--keep public class dev.momo.library.**{
+-keep public interface org.pengyr.tool.datalist.**{
    public protected *;
 }
 
