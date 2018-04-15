@@ -16,5 +16,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".recycler.SampleRecyclerListActivity"/>
+        <activity android:name=".clickablerecycler.RecyclerClickableListActivity"/>
+
     </application>
 </manifest>

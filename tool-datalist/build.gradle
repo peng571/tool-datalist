@@ -58,9 +58,8 @@ android {
 
 dependencies {
     // Android Support Library
-//    implementation "com.android.support:appcompat-v7:$rootProject.ext.supportLibraryVersion"
-//    implementation "com.android.support:recyclerview-v7:$rootProject.ext.supportLibraryVersion"
-//    implementation "com.android.support:design:$rootProject.ext.supportLibraryVersion"
+    implementation "com.android.support:recyclerview-v7:$rootProject.ext.supportLibraryVersion"
+    implementation "com.android.support:design:$rootProject.ext.supportLibraryVersion"
     implementation "com.android.support:support-annotations:$rootProject.ext.supportLibraryVersion"
 
     // Retrofit & OKHttp

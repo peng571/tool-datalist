@@ -1,36 +1,52 @@
 package org.pengyr.tool.datalist.sample;
 
-import android.databinding.DataBindingUtil;
+import android.app.Activity;
 import android.os.Bundle;
-
-import org.pengyr.tool.datalist.sample.databinding.MainActivityBinding;
-import org.pengyr.tool.datalist.sample.model.SampleContainer;
-import org.pengyr.tool.datalist.sample.model.pojo.SampleObject;
+import android.support.v7.app.AppCompatActivity;
 
 
 /**
- * Created by Peng on 2018/3/25.
+ * 所有Activity的父類別
+ * <p>
+ * Created by Peng on 2017/10/29.
  */
-public class MainActivity extends BaseActivity {
+public class MainActivity extends AppCompatActivity {
 
     private final static String TAG = MainActivity.class.getSimpleName();
 
-    private MainActivityBinding binding;
+    // activity is alive or not
+    protected boolean isAlive;
 
-    private SampleContainer container;
+    // activity is shown on foreground or not
+    protected boolean isShown;
 
-    @Override protected void onCreate(Bundle savedInstanceState) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.main_activity);
+        isAlive = true;
+    }
 
 
-        SampleObject sampleObject = new SampleObject(0, "Data not found, use default object");
+    @Override
+    protected void onResume() {
+        super.onResume();
+        isShown = true;
+    }
 
-        container = SampleContainer.get();
-        binding.message1.setText(container.getObject(2l, sampleObject).getMessage());
-        binding.message2.setText(container.getObject(3l, sampleObject).getMessage());
+    @Override
+    protected void onPause() {
+        super.onPause();
+        isShown = false;
+    }
 
+    @Override
+    protected void onDestroy() {
+        isAlive = false;
+        super.onDestroy();
+    }
 
+    public Activity getActivity() {
+        return this;
     }
 
 }

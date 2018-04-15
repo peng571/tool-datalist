@@ -1,6 +1,6 @@
 package org.pengyr.tool.datalist.sample.model;
 
-import org.pengyr.tool.datalist.data.KeyModelContainer;
+import org.pengyr.tool.datalist.model.KeyModelContainer;
 import org.pengyr.tool.datalist.sample.model.pojo.SampleObject;
 
 /**
@@ -11,7 +11,7 @@ public class SampleContainer extends KeyModelContainer<Long, SampleObject> {
 
     private static SampleContainer instance;
 
-    public synchronized static SampleContainer get() {
+    public synchronized static SampleContainer getInstance() {
         if (instance == null) {
             instance = new SampleContainer();
         }
@@ -19,7 +19,8 @@ public class SampleContainer extends KeyModelContainer<Long, SampleObject> {
     }
 
     private SampleContainer() {
-        addObject(new SampleObject(1, "First message"));
-        addObject(new SampleObject(2, "Second message"));
+        // anyway, add some data into container.
+        add(new SampleObject(1, "First message"));
+        add(new SampleObject(2, "Second message"));
     }
 }
