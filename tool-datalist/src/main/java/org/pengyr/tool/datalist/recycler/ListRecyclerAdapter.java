@@ -41,9 +41,11 @@ public abstract class ListRecyclerAdapter<T, VH extends RecyclerView.ViewHolder>
 
 
     /**
+     * Get item from array
+     * if position is out of list range, will auto fix into range
      *
-     * @param position
-     * @return
+     * @param position in array
+     * @return item in position
      */
     public T getItem(int position) {
         if (data == null) return null;
@@ -144,40 +146,6 @@ public abstract class ListRecyclerAdapter<T, VH extends RecyclerView.ViewHolder>
         }
         return index;
     }
-
-
-    //    @Deprecated
-    //    public void setItemClickListener(OnItemClickListener<T> listener) {
-    //        if (clickListener == null) {
-    //            clickListener = new ArrayMap<>();
-    //        }
-    //        clickListener.put(0, listener);
-    //    }
-    //
-    //
-    //    @Deprecated
-    //    public void addItemClickListener(int viewType, OnItemClickListener<T> listener) {
-    //        if (clickListener == null) {
-    //            clickListener = new ArrayMap<>();
-    //        }
-    //        clickListener.put(viewType, listener);
-    //    }
-    //
-    //    @Deprecated
-    //    public void setItemLongClickListener(OnItemLongClickListener<T> listener) {
-    //        if (longClickListener == null) {
-    //            longClickListener = new ArrayMap<>();
-    //        }
-    //        longClickListener.put(0, listener);
-    //    }
-    //
-    //    @Deprecated
-    //    public void addItemLongClickListener(int viewType, OnItemLongClickListener<T> listener) {
-    //        if (longClickListener == null) {
-    //            longClickListener = new ArrayMap<>();
-    //        }
-    //        longClickListener.put(viewType, listener);
-    //    }
 
 
 }
