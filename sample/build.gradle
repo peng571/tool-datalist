@@ -46,7 +46,9 @@ dependencies {
     implementation "com.android.support:design:$rootProject.ext.supportLibraryVersion"
     implementation "com.android.support:support-annotations:$rootProject.ext.supportLibraryVersion"
 
-    implementation project(path: ':tool-datalist')
+    implementation project(path: ':models')
+    implementation project(path: ':model-datalist')
+    implementation project(path: ':model-recyclerlist')
 
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "com.android.support.test:runner:$runnerVersion"

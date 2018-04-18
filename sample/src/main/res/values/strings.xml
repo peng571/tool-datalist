@@ -1,5 +1,3 @@
 <resources>
     <string name="app_name">Sample</string>
-
-    <string name="build_success_message">version %s build success!</string>
 </resources>

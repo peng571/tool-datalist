@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
 
     <data></data>
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/listView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+        <Button
+            android:id="@+id/buttonNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="normal list"
+            />
+
+        <Button
+            android:id="@+id/buttonClickable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="clickable list"
+            />
+
 
     </LinearLayout>
 
