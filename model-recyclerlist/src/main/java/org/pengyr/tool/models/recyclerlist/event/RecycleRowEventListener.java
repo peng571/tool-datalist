@@ -1,6 +1,8 @@
-package org.pengyr.tool.models.recyclerlist;
+package org.pengyr.tool.models.recyclerlist.event;
 
 import android.support.annotation.IntDef;
+
+import org.pengyr.tool.models.recyclerlist.ModelRowHolder;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

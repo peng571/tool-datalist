@@ -5,8 +5,10 @@ import android.support.annotation.CallSuper;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import static org.pengyr.tool.models.recyclerlist.RecycleRowEventListener.CLICK_EVENT;
-import static org.pengyr.tool.models.recyclerlist.RecycleRowEventListener.LONG_CLICK_EVENT;
+import org.pengyr.tool.models.recyclerlist.event.RecycleRowEventListener;
+
+import static org.pengyr.tool.models.recyclerlist.event.RecycleRowEventListener.CLICK_EVENT;
+import static org.pengyr.tool.models.recyclerlist.event.RecycleRowEventListener.LONG_CLICK_EVENT;
 
 /**
  * Recycler ViewHolder
