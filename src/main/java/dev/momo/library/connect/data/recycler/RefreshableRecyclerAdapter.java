@@ -17,7 +17,6 @@ import retrofit2.Response;
  * @param <T>
  * @param <VH>
  */
-@Deprecated
 public abstract class RefreshableRecyclerAdapter<T, VH extends ObjectViewHolder<T>> extends ListRecyclerAdapter<T, VH> {
 
     private final String TAG = RefreshableRecyclerAdapter.class.getSimpleName();
