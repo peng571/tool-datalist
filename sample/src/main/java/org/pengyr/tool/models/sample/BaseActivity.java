@@ -20,27 +20,23 @@ public class BaseActivity extends AppCompatActivity {
     // activity is shown on foreground or not
     protected boolean isShown;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    @Override protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         isAlive = true;
     }
 
 
-    @Override
-    protected void onResume() {
+    @Override protected void onResume() {
         super.onResume();
         isShown = true;
     }
 
-    @Override
-    protected void onPause() {
+    @Override protected void onPause() {
         super.onPause();
         isShown = false;
     }
 
-    @Override
-    protected void onDestroy() {
+    @Override protected void onDestroy() {
         isAlive = false;
         super.onDestroy();
     }

@@ -16,6 +16,7 @@ public abstract class ObjectParser<L, S> {
     private final static String TAG = ObjectParser.class.getSimpleName();
 
     @Nullable
+    @SuppressWarnings("unchecked")
     public List<L> parseResponse(Response response) {
         if (response == null) return null;
 

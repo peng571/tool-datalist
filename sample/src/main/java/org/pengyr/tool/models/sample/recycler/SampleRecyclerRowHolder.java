@@ -11,7 +11,6 @@ import org.pengyr.tool.models.sample.model.pojo.SampleObject;
 /**
  * Created by Peng on 2018/4/15.
  */
-
 public class SampleRecyclerRowHolder extends ModelRowHolder<Long> {
 
     private final ViewDataBinding binding;

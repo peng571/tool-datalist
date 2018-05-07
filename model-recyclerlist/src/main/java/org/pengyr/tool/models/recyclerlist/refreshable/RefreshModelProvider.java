@@ -31,12 +31,9 @@ public class RefreshModelProvider<M extends KeyModel<P>, P> extends KeyModelProv
     protected boolean noMore = false;
     protected boolean refresh = false;
 
-    @Nullable
-    protected PagingOption pageOption;
-    @Nullable
-    protected OnRefreshListener<P> refreshOption;
-    @Nullable
-    protected RefreshCellHolder<M, P> refreshCellHolder;
+    @Nullable protected PagingOption pageOption;
+    @Nullable protected OnRefreshListener<P> refreshOption;
+    @Nullable protected RefreshCellHolder<M, P> refreshCellHolder;
 
     public RefreshModelProvider() {
         super();
@@ -45,6 +42,45 @@ public class RefreshModelProvider<M extends KeyModel<P>, P> extends KeyModelProv
         refresh = false;
     }
 
+
+    /**
+     * @param adapter        target recycler adapter.
+     * @param notifyListener notify listener, handle when adapter update.
+     * @param refresh        refresh listener, handle when adapter refresh or reload from remote.
+     * @param pageOption     page option, handle when paging
+     * @param remotCell      remote cell
+     */
+    public void bind(RecyclerView.Adapter adapter,
+            @Nullable OnNotifyListener<P> notifyListener, @Nullable OnRefreshListener<P> refresh,
+            @Nullable PagingOption pageOption, RefreshCellHolder<M, P> remotCell) {
+        super.bind(adapter, notifyListener);
+        this.refreshOption = refresh;
+        this.pageOption = pageOption;
+        this.refreshCellHolder = remotCell;
+
+        // call on refresh done again when bind again
+        this.refreshOption.onRefreshDone(false);
+    }
+
+
+    public void bind(RecyclerView.Adapter adapter, RefreshCellHolder<M, P> remotCell) {
+        bind(adapter, null, null, remotCell);
+    }
+
+    public void bind(RecyclerView.Adapter adapter, @Nullable OnRefreshListener<P> refresh, RefreshCellHolder<M, P> remotCell) {
+        bind(adapter, null, refresh, remotCell);
+    }
+
+
+    public void bind(RecyclerView.Adapter adapter,
+            @Nullable OnNotifyListener<P> notifyListener, @Nullable OnRefreshListener<P> refresh,
+            RefreshCellHolder<M, P> remotCell) {
+        bind(adapter, notifyListener, refresh, null, remotCell);
+    }
+
+    /**
+     * call when adapter
+     */
     @Override
     public void unbind() {
         super.unbind();
@@ -54,41 +90,12 @@ public class RefreshModelProvider<M extends KeyModel<P>, P> extends KeyModelProv
     }
 
 
-    public void bind(RecyclerView.Adapter adapter, RefreshCellHolder remotCell) {
-        bind(adapter, null, null, remotCell);
-    }
-
-    public void bind(RecyclerView.Adapter adapter, @Nullable OnRefreshListener refresh, RefreshCellHolder remotCell) {
-        bind(adapter, null, refresh, remotCell);
-    }
-
-
-    public void bind(RecyclerView.Adapter adapter, @Nullable OnNotifyListener<P> notifyListener, @Nullable OnRefreshListener refresh, RefreshCellHolder remotCell) {
-        bind(adapter, notifyListener, refresh, null, remotCell);
-    }
-
-
-    public void bind(RecyclerView.Adapter adapter, @Nullable OnNotifyListener<P> notifyListener, @Nullable OnRefreshListener refresh, @Nullable PagingOption page, RefreshCellHolder remotCell) {
-        super.bind(adapter, notifyListener);
-        this.refreshOption = refresh;
-        this.pageOption = page;
-        this.refreshCellHolder = remotCell;
-
-        // call on refresh done again when bind again
-        this.refreshOption.onRefreshDone(false);
-    }
-
-
     @Nullable
     @Override
     public P get(int position) {
         // ask load more, on item get
         askLoadMore(position);
         return super.get(position);
-    }
-
-    private boolean isPagable() {
-        return pageOption != null;
     }
 
     private boolean isRefreshable() {
@@ -126,7 +133,7 @@ public class RefreshModelProvider<M extends KeyModel<P>, P> extends KeyModelProv
      * Paging Method
      */
     protected void askLoadMore(int position) {
-        if (!isPagable()) return;
+        if (pageOption == null) return;
         if (isFetching()) return;
         if (noMore) return;
         if (count() - position < pageOption.getPageItemCount()) {
@@ -194,7 +201,7 @@ public class RefreshModelProvider<M extends KeyModel<P>, P> extends KeyModelProv
             for (P p : newItems) {
                 add(p);
             }
-            if (isPagable()) {
+            if (pageOption != null) {
                 if (newItemCount < pageOption.getPageItemCount()) {
                     noMore = true;
                 } else {
