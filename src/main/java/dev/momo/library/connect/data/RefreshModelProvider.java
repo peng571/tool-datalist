@@ -31,12 +31,9 @@ public class RefreshModelProvider<M extends DataModel<P>, P> extends DataModelPr
     protected boolean noMore = false;
     protected boolean refresh = false;
 
-    @Nullable
-    protected PagingOption pageOption;
-    @Nullable
-    protected OnRefreshListener<P> refreshOption;
-    @Nullable
-    protected RefreshCellHolder<M, P> refreshCellHolder;
+    @Nullable protected PagingOption pageOption;
+    @Nullable protected OnRefreshListener<P> refreshOption;
+    @Nullable protected RefreshCellHolder<M, P> refreshCellHolder;
 
     public RefreshModelProvider() {
         super();
@@ -62,11 +59,9 @@ public class RefreshModelProvider<M extends DataModel<P>, P> extends DataModelPr
         bind(adapter, null, refresh, remotCell);
     }
 
-
     public void bind(RecyclerView.Adapter adapter, @Nullable OnNotifyListener<P> notifyListener, @Nullable OnRefreshListener refresh, RefreshCellHolder remotCell) {
         bind(adapter, notifyListener, refresh, null, remotCell);
     }
-
 
     public void bind(RecyclerView.Adapter adapter, @Nullable OnNotifyListener<P> notifyListener, @Nullable OnRefreshListener refresh, @Nullable PagingOption page, RefreshCellHolder remotCell) {
         super.bind(adapter, notifyListener);
