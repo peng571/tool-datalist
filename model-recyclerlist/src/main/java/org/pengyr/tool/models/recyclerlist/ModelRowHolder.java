@@ -5,6 +5,8 @@ import android.support.annotation.CallSuper;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import org.pengyr.tool.models.recyclerlist.event.OnItemClickListener;
+import org.pengyr.tool.models.recyclerlist.event.OnItemLongClickListener;
 import org.pengyr.tool.models.recyclerlist.event.RecycleRowEventListener;
 
 import static org.pengyr.tool.models.recyclerlist.event.RecycleRowEventListener.CLICK_EVENT;
@@ -23,10 +25,26 @@ public abstract class ModelRowHolder<T> extends RecyclerView.ViewHolder {
 
     private RecycleRowEventListener<T> eventListener;
 
+    /**
+     * listener for special viewHolder
+     * if set listener on view, will stop even listener
+     */
+    private OnItemClickListener<T> clicklistener;
+    private OnItemLongClickListener<T> longClickListener;
+
     public ModelRowHolder(final View itemView) {
         super(itemView);
         itemView.setOnClickListener(onClickListener);
         itemView.setOnLongClickListener(onLongClickListener);
+    }
+
+
+    public void listen(OnItemClickListener<T> clicklistener) {
+        this.clicklistener = clicklistener;
+    }
+
+    public void listen(OnItemLongClickListener<T> longClickListener) {
+        this.longClickListener = longClickListener;
     }
 
 
@@ -35,11 +53,21 @@ public abstract class ModelRowHolder<T> extends RecyclerView.ViewHolder {
     }
 
     private final View.OnClickListener onClickListener = (v) -> {
+        if (clicklistener != null) {
+            clicklistener.onItemClick(this);
+            return;
+        }
+
         if (eventListener == null) return;
         eventListener.onRowAction(CLICK_EVENT, this);
     };
 
     private final View.OnLongClickListener onLongClickListener = (v) -> {
+        if (longClickListener != null) {
+            longClickListener.onItemLongClick(this);
+            return false;
+        }
+
         if (eventListener == null) return false;
         eventListener.onRowAction(LONG_CLICK_EVENT, this);
         return true;
