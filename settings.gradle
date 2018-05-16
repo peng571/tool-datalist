@@ -1,3 +1,4 @@
 include ':models'
+include ':model-list'
 include ':model-recyclerlist'
 include ':sample'
