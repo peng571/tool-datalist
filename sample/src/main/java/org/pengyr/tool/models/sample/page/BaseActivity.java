@@ -1,4 +1,4 @@
-package org.pengyr.tool.models.sample;
+package org.pengyr.tool.models.sample.page;
 
 import android.app.Activity;
 import android.os.Bundle;

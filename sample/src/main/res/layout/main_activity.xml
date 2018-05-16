@@ -19,10 +19,17 @@
             />
 
         <Button
-            android:id="@+id/buttonClickable"
+            android:id="@+id/buttonHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="clickable list"
+            android:text="header list"
+            />
+
+        <Button
+            android:id="@+id/buttonRefreshable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="refreshable list"
             />
 
 

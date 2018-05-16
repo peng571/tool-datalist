@@ -1,4 +1,4 @@
-package org.pengyr.tool.models.sample.recycler;
+package org.pengyr.tool.models.sample.page.normal;
 
 
 import android.databinding.ViewDataBinding;
@@ -11,13 +11,13 @@ import org.pengyr.tool.models.sample.model.pojo.SampleObject;
 /**
  * Created by Peng on 2018/4/15.
  */
-public class SampleRecyclerRowHolder extends ModelRowHolder<Long> {
+public class NormalRecyclerRowHolder extends ModelRowHolder<Long> {
 
     private final ViewDataBinding binding;
 
     private final SampleObject emptySampleObject = new SampleObject(0, "Empty Object");
 
-    public SampleRecyclerRowHolder(ViewDataBinding binding) {
+    public NormalRecyclerRowHolder(ViewDataBinding binding) {
         super(binding.getRoot());
         this.binding = binding;
     }

@@ -1,4 +1,4 @@
-package org.pengyr.tool.models.sample.recycler;
+package org.pengyr.tool.models.sample.page.normal;
 
 
 import android.databinding.DataBindingUtil;
@@ -13,12 +13,12 @@ import org.pengyr.tool.models.sample.R;
  * Created by Peng on 2018/4/15.
  */
 
-public class SampleRecyclerListAdapter extends ListRecyclerAdapter<Long, SampleRecyclerRowHolder> {
+public class NormalRecyclerListAdapter extends ListRecyclerAdapter<Long, NormalRecyclerRowHolder> {
 
-    @Override public SampleRecyclerRowHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    @Override public NormalRecyclerRowHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         ViewDataBinding binding = DataBindingUtil.inflate(layoutInflater, R.layout.sample_row, parent, false);
-        return new SampleRecyclerRowHolder(binding);
+        return new NormalRecyclerRowHolder(binding);
     }
 
 }

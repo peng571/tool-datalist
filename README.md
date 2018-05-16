@@ -12,14 +12,6 @@ using gradle
 
     compile 'org.pengyr.tool:models:[last version]'
 
-using maven
-
-    <dependency>
-        <groupId>org.pengyr.tool</groupId>
-        <artifactId>models-recyclerlist</artifactId>
-        <version>[last version]</version>
-        <type>pom</type>
-    </dependency>
 
 #### Model
 
@@ -51,23 +43,9 @@ using maven
     adapter.setOnItemClickListener(clickListener);
     adapter.setOnItemLongClickListener(longClickListener);
 
-
-
 若需要增加新的event，可複寫RecyclerRowEventListener。
 
-> TODO 在sample中加入範例
+若需要針對特定的viewholder，設定不同的event listener，
+則可在adapter的onCreateView直接使用viewholder.listen(eventListener)來設定，
+若設定了其他的eventListener，則會在該viewholder上取代掉原本對adapter設定的事件。
 
-
-
-
-
-## Models Data list
-
-針對傳統的list view，設計的工具。
-
-
-使用Gradle
-
-    compile 'org.pengyr.tool:models-datalist:[last version]'
-
-> 未完成。
