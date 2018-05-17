@@ -22,7 +22,7 @@ public class HeaderRecyclerRowHolder extends ModelRowHolder<Long> {
         this.binding = binding;
     }
 
-    @Override protected void bind(int position, Long object) {
+    @Override public void bind(int position, Long object) {
         super.bind(position, object);
         SampleObject sampleObject = SampleContainer.getInstance().get(object, emptySampleObject);
         binding.setVariable(BR.data, sampleObject);
